@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { productServices } from "./product.service";
 import ProductValidationSchema from "./product.validation";
+import { string } from "zod";
 
 const createProduct = async (req: Request, res: Response) => {
   try {
@@ -24,7 +25,9 @@ const createProduct = async (req: Request, res: Response) => {
 };
 const getAllProduct = async (req: Request, res: Response) => {
   try {
-    const result = await productServices.getProductFromDB();
+    const query = req.query.searchTerm;
+    // console.log(query);
+    const result = await productServices.getProductFromDB(query);
     res.status(200).json({
       success: true,
       message: "Products fetched successfully!",
@@ -102,5 +105,5 @@ export const productController = {
   getAllProduct,
   getProductByID,
   updateProductByID,
-  deleteProductByID
+  deleteProductByID,
 };

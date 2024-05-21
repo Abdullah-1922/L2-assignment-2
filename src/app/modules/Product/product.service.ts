@@ -5,8 +5,23 @@ const createProductToDB = async (productData: TProduct) => {
   const result = await Product.create(productData);
   return result;
 };
-const getProductFromDB = async () => {
-  const result = await Product.find();
+
+const getProductFromDB = async (query: any) => {
+console.log(query);
+  // if there is a searchTerm query  
+  if (query) {
+    const result = await Product.find({
+      $or: [
+        { name: { $regex: query, $options: "i" } },
+        { description: { $regex: query, $options: "i" } },
+        { tags: { $regex: query, $options: "i" } },
+      ],
+    });
+    return result;
+  }
+
+  const result = await Product.find({});
+
   return result;
 };
 const getProductByID = async (productId: string | number) => {
