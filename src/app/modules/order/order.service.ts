@@ -4,12 +4,11 @@ import { TOrder } from "./order.interface";
 import { Order } from "./order.model";
 
 const createOrder = async (orderData: TOrder) => {
-
-    // find the product by product ID
+  // find the product by product ID
   const validIdProduct: any = await Product.findOne({
     _id: orderData.productId,
   });
-    
+
   if (validIdProduct.inventory.quantity < orderData.quantity) {
     throw Error("Insufficient quantity available in inventory");
   }
@@ -28,11 +27,17 @@ const createOrder = async (orderData: TOrder) => {
   return result;
 };
 
-const getAllOrders=async()=>{
-    
-}
+const getAllOrders = async (query: any) => {
+  if (query) {
+    const result = Order.find({ email: query });
+    return result;
+  }
 
+  const result = Order.find({});
+  return result;
+};
 
 export const orderServices = {
   createOrder,
+  getAllOrders,
 };
