@@ -7,12 +7,9 @@ const app = express();
 //parsers
 app.use(express.json());
 
-
 //routers
-app.use('/api/products',productRouter)
-app.use('/api/orders',orderRouter)
-
-
+app.use("/api/products", productRouter);
+app.use("/api/orders", orderRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");

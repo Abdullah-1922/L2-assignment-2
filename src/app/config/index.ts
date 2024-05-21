@@ -1,11 +1,8 @@
+import dotenv from "dotenv";
 
-import dotenv from 'dotenv'
-
-dotenv.config()
-
-
+dotenv.config();
 
 export default {
-    port :process.env.PORT,
-    database_url:process.env.DATABASE_URL
-}
+  port: process.env.PORT,
+  database_url: process.env.DATABASE_URL,
+};
