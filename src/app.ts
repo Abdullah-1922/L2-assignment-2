@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { productRouter } from "./app/modules/Product/product.route";
+import { orderRouter } from "./app/modules/order/order.route";
 
 const app = express();
 
@@ -9,6 +10,7 @@ app.use(express.json());
 
 //routers
 app.use('/api/products',productRouter)
+app.use('/api/orders',orderRouter)
 
 
 
