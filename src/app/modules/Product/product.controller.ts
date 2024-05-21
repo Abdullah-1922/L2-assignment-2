@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { productServices } from "./product.service";
 import ProductValidationSchema from "./product.validation";
-import { string } from "zod";
+
 
 const createProduct = async (req: Request, res: Response) => {
   try {
@@ -73,7 +73,7 @@ const updateProductByID = async (req: Request, res: Response) => {
       message: "Product updated successfully!",
       data: result,
     });
-  } catch (err: any) {
+  } catch (err:any) {
     res.status(500).json({
       success: false,
       message: err.message || "Product updated failed",

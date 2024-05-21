@@ -4,6 +4,7 @@
   "description": "",
   "main": "node ./src/server.js",
   "scripts": {
+    "lint":"npx eslint src",
     "prettier:fix": "npx prettier . --write",
     "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/eslint": "^8.56.10",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
@@ -19,7 +19,11 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@eslint/js": "^9.3.0",
     "@types/express": "^4.17.21",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
+    "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   }
