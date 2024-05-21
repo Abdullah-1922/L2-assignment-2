@@ -60,7 +60,7 @@ const updateProductByID = async (req: Request, res: Response) => {
     const { productId } = req.params;
     const productData = req.body;
     const zodParsedData = ProductValidationSchema.parse(productData);
-    
+
     const result = await productServices.updateProductByID(
       productId,
       zodParsedData
@@ -70,10 +70,28 @@ const updateProductByID = async (req: Request, res: Response) => {
       message: "Product updated successfully!",
       data: result,
     });
-  } catch (err:any) {
+  } catch (err: any) {
     res.status(500).json({
       success: false,
       message: err.message || "Product updated failed",
+      data: err,
+    });
+  }
+};
+const deleteProductByID = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+
+    const result = await productServices.deleteProductByID(productId);
+    res.status(200).json({
+      success: true,
+      message: "Product deleted successfully!",
+      data: result,
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      success: false,
+      message: err.message || "Product deleted  failed",
       data: err,
     });
   }
@@ -84,4 +102,5 @@ export const productController = {
   getAllProduct,
   getProductByID,
   updateProductByID,
+  deleteProductByID
 };
