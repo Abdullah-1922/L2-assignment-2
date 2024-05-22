@@ -7,7 +7,7 @@ const createProductToDB = async (productData: TProduct) => {
 };
 
 const getProductFromDB = async (query: any) => {
-  console.log(query);
+  // console.log(query);
   // if there is a searchTerm query
   if (query) {
     const result = await Product.find({

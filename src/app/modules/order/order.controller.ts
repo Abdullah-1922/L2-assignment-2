@@ -8,7 +8,7 @@ const createOrder = async (req: Request, res: Response) => {
     // console.log(req.body);
 
     const zodValidateData = orderValidationSchema.parse(req.body);
-    console.log(zodValidateData);
+    // console.log(zodValidateData);
     const result = await orderServices.createOrder(zodValidateData);
 
     res.status(200).json({
