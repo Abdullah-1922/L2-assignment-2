@@ -3,6 +3,7 @@ export type TVariant = {
   value: string;
 };
 
+type hello =string
 export type TInventory = {
   quantity: number;
   inStock: boolean;
